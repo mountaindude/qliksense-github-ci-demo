@@ -11,8 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set file share credentials 1
-      run: $username = "${{ secrets.FILESHARE_USERNAME }}"
-      run: write-output $username
+      run: $username = "${{ secrets.FILESHARE_USERNAME }}"; write-output $username
     - name: Set file share credentials
       run: $password = ConvertTo-SecureString "${{ secrets.FILESHARE_PASSWORD }}" -AsPlainText -Force
     - name: Create Powershell credentials object
