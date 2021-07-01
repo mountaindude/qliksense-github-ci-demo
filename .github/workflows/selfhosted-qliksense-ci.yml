@@ -13,7 +13,7 @@ jobs:
     - name: Set file share credentials
       run: $username = "${{ secrets.FILESHARE_USERNAME }}"; $password = ConvertTo-SecureString "${{ secrets.FILESHARE_PASSWORD }}" -AsPlainText -Force
     - name: Debug 1
-      run: Write-Host $username
+      run: write-output $username
     - name: Create Powershell credentials object
       run: $cred = New-Object System.Management.Automation.PSCredential -ArgumentList ($username, $password)
     - name: Mount drive
