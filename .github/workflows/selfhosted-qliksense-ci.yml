@@ -12,6 +12,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Set file share credentials
       run: $username = "${{ secrets.FILESHARE_USERNAME }}"; $password = ConvertTo-SecureString "${{ secrets.FILESHARE_PASSWORD }}" -AsPlainText -Force
+    - name: Debug 1
+      run: Write-Host $username
     - name: Create Powershell credentials object
       run: $cred = New-Object System.Management.Automation.PSCredential -ArgumentList ($username, $password)
     - name: Mount drive
