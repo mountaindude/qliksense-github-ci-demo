@@ -11,14 +11,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set file share credentials 1
-      run: $username = "${{ secrets.FILESHARE_USERNAME }}"; write-output $username
-    - name: Set file share credentials
-      run: $password = ConvertTo-SecureString "${{ secrets.FILESHARE_PASSWORD }}" -AsPlainText -Force
-    - name: Create Powershell credentials object
-      run: $cred = New-Object System.Management.Automation.PSCredential -ArgumentList ($username, $password)
-    - name: Mount drive
-      run: New-PSDrive -Name "${{ secrets.FILESHARE_LETTER }}" -Root "${{ secrets.FILESHARE_UNC }}" -PSProvider "FileSystem" -Credential $cred        
-    - name: Copy files
-      run: Copy-Item "scripts" -Destination "${{ secrets.FILESHARE_LETTER }}:\ci_demo" -Recurse
-    - name: Disconnect drive
-      run: Remove-PSDrive -Name ${{ secrets.FILESHARE_LETTER }}
+      run: $username = "${{ secrets.FILESHARE_USERNAME }}"; $password = ConvertTo-SecureString "${{ secrets.FILESHARE_PASSWORD }}" -AsPlainText -Force; $cred = New-Object System.Management.Automation.PSCredential -ArgumentList ($username, $password); New-PSDrive -Name "${{ secrets.FILESHARE_LETTER }}" -Root "${{ secrets.FILESHARE_UNC }}" -PSProvider "FileSystem" -Credential $cred; Copy-Item "scripts" -Destination "${{ secrets.FILESHARE_LETTER }}:\ci_demo" -Recurse; Remove-PSDrive -Name ${{ secrets.FILESHARE_LETTER }}
+    # - name: Set file share credentials
+    #   run: 
+    # - name: Create Powershell credentials object
+    #   run: $cred = New-Object System.Management.Automation.PSCredential -ArgumentList ($username, $password)
+    # - name: Mount drive
+    #   run: New-PSDrive -Name "${{ secrets.FILESHARE_LETTER }}" -Root "${{ secrets.FILESHARE_UNC }}" -PSProvider "FileSystem" -Credential $cred
+    # - name: Copy files
+    #   run: Copy-Item "scripts" -Destination "${{ secrets.FILESHARE_LETTER }}:\ci_demo" -Recurse
+    # - name: Disconnect drive
+    #   run: Remove-PSDrive -Name ${{ secrets.FILESHARE_LETTER }}
