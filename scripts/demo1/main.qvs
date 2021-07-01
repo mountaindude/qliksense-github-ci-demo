@@ -1,0 +1,19 @@
+/*
+ * File: /Users/goran/code/qliksense-github-ci-demo/scripts/demo1/main.qvs
+ * Path: /Users/goran
+ * Created: Thursday 2021-07-01 05:36:39
+ * Author: Göran Sander
+ * -----
+ * Last Modified: Thursday 2021-07-01 05:53:48
+ * Modified By: Göran Sander
+ * -----
+ * Description: 
+ * -----
+ * Copyright (c) 2021 Ptarmigan Labs AB
+ */
+
+$(Must_Include=[lib://CI demo/scripts/demo1/init.qvs])
+
+$(Must_Include=[lib://CI demo/scripts/demo1/subfile1.qvs])
+
+$(Must_Include=[lib://CI demo/scripts/demo1/subfile2.qvs])
