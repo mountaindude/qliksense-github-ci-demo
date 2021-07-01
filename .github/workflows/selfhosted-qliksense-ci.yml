@@ -10,8 +10,10 @@ jobs:
     runs-on: [self-hosted, windows, X64, qliksense-ci]
     steps:
     - uses: actions/checkout@v2
+    - name: Set file share credentials 1
+      run: $username = "${{ secrets.FILESHARE_USERNAME }}"
     - name: Set file share credentials
-      run: $username = "${{ secrets.FILESHARE_USERNAME }}"; $password = ConvertTo-SecureString "${{ secrets.FILESHARE_PASSWORD }}" -AsPlainText -Force
+      run: $password = ConvertTo-SecureString "${{ secrets.FILESHARE_PASSWORD }}" -AsPlainText -Force
     - name: Debug 1
       run: write-output $username
     - name: Create Powershell credentials object
