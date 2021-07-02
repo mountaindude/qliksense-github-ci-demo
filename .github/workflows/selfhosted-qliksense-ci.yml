@@ -21,3 +21,11 @@ jobs:
             -paramFileShareLetter '${{ secrets.FILESHARE_LETTER }}' `
             -paramFileShareUNC '${{ secrets.FILESHARE_UNC }}'
       # run: $username = "${{ secrets.FILESHARE_USERNAME }}"; $password = ConvertTo-SecureString "${{ secrets.FILESHARE_PASSWORD }}" -AsPlainText -Force; $cred = New-Object System.Management.Automation.PSCredential -ArgumentList ($username, $password); New-PSDrive -Name "${{ secrets.FILESHARE_LETTER }}" -Root "${{ secrets.FILESHARE_UNC }}" -PSProvider "FileSystem" -Credential $cred; Copy-Item "scripts" -Destination "${{ secrets.FILESHARE_LETTER }}:\ci_demo" -Recurse; Remove-PSDrive -Name ${{ secrets.FILESHARE_LETTER }}
+
+    - name: Reload app "CI demo"
+      uses: fjogeleit/http-request-action@master
+      with:
+        url: 'http://192.168.100.112:8080/v4/reloadtask/4174b1ec-0fd1-4cbe-8d47-0afe545d69bd/start'
+        method: 'PUT'
+        # username: 
+        # password: 
