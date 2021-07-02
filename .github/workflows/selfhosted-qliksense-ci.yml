@@ -18,6 +18,6 @@ jobs:
       run: .\powershell\copyfiles_demo1.ps1 `
             -paramUsername '${{ secrets.FILESHARE_USERNAME }}' `
             -paramPassword '${{ secrets.FILESHARE_PASSWORD }}' `
-            -paramFileShareLetter ${{ secrets.FILESHARE_LETTER }} `
-            -paramFileShareUNC ${{ secrets.FILESHARE_UNC }}
+            -paramFileShareLetter '${{ secrets.FILESHARE_LETTER }}' `
+            -paramFileShareUNC '${{ secrets.FILESHARE_UNC }}'
       # run: $username = "${{ secrets.FILESHARE_USERNAME }}"; $password = ConvertTo-SecureString "${{ secrets.FILESHARE_PASSWORD }}" -AsPlainText -Force; $cred = New-Object System.Management.Automation.PSCredential -ArgumentList ($username, $password); New-PSDrive -Name "${{ secrets.FILESHARE_LETTER }}" -Root "${{ secrets.FILESHARE_UNC }}" -PSProvider "FileSystem" -Credential $cred; Copy-Item "scripts" -Destination "${{ secrets.FILESHARE_LETTER }}:\ci_demo" -Recurse; Remove-PSDrive -Name ${{ secrets.FILESHARE_LETTER }}

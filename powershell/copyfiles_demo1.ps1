@@ -15,7 +15,7 @@ New-PSDrive -Name "$paramFileShareLetter" -Root "$paramFileShareUNC" -PSProvider
 dir
 
 # Copy files
-Copy-Item "scripts" -Destination "$paramFileShareLetter:\ci_demo" -Recurse
+Copy-Item "scripts" -Destination $paramFileShareLetter + ":\ci_demo" -Recurse
 
 # Disconnect drive
 Remove-PSDrive -Name $paramFileShareLetter
