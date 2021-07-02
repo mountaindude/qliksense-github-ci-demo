@@ -10,7 +10,11 @@ jobs:
     runs-on: [self-hosted, windows, X64, qliksense-ci]
     steps:
     - uses: actions/checkout@v2
-    - name: Set file share credentials 
+
+    - name: Debug 
+      run: dir
+
+    - name: Copy script files 
       run: .\powershell\copyfiles_demo1.ps1 `
             -paramUsername '${{ secrets.FILESHARE_USERNAME }}' `
             -paramPassword '${{ secrets.FILESHARE_PASSWORD }}' `

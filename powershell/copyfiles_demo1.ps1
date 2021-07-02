@@ -11,6 +11,9 @@ $cred = New-Object System.Management.Automation.PSCredential -ArgumentList ($use
 # Mount drive
 New-PSDrive -Name "$paramFileShareLetter" -Root "$paramFileShareUNC" -PSProvider "FileSystem" -Credential $cred
 
+# Debug
+dir
+
 # Copy files
 Copy-Item "scripts" -Destination "$paramFileShareLetter:\ci_demo" -Recurse
 
