@@ -24,6 +24,6 @@ jobs:
     - name: Reload app "CI demo"
       uses: fjogeleit/http-request-action@master
       with:
-        url: 'http://192.168.100.112:8080/v4/reloadtask/4174b1ec-0fd1-4cbe-8d47-0afe545d69bd/start'
+        url: 'http://pro2-win3:8080/v4/reloadtask/4174b1ec-0fd1-4cbe-8d47-0afe545d69bd/start'
         method: 'PUT'
  
